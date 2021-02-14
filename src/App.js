@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 // import crypto from 'crypto';
 import AdminPage from "./pages/Admin/AdminPage";
@@ -9,7 +10,7 @@ import LoginPage from "./pages/LoginPage";
 //   return "https://www.gravatar.com/avatar/" + crypto.createHash('md5').update(email).digest('hex');
 // }
 
-const App = () => {
+const App = ({ user }) => {
 
     // useEffect(() => {
     //     document.getElementById("body").className="hold-transition sidebar-mini layout-fixed";
@@ -17,18 +18,23 @@ const App = () => {
 
     return (
         <>
-
-            <Switch>
-                <Route exact path="/login" component={LoginPage} />
-
-                {/*Default Page Template After Login*/}
-                <Route exact path="/admin" component={AdminPage} />
-
-                {/*Redirect if not authenticated*/}
-                <Redirect to="/login" />
-            </Switch>
+            {!user.isLoggedIn ? (
+                <Switch>
+                    <Route exact path="/login" component={LoginPage} />
+                    <Redirect to="/login" />
+                </Switch>
+            ) : (
+                <Switch>
+                    <Route exact path="/admin" component={AdminPage} />
+                    <Redirect to="/admin" />
+                </Switch>
+            )}
         </>
     )
 }
 
-export default App;
+const mapStateToProps = (state) => ({ user: state.user });
+const mapDispatchToProps = (dispatch) => ({
+    dispatchLogoutAction: () => {}
+});
+export default connect(mapStateToProps)(App);

@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import LoginForm from "../components/Login.component";
 
 const LoginPage = () => {
-
-    // state for save input
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
 
     useEffect(() => {
         // update body class
@@ -23,35 +20,8 @@ const LoginPage = () => {
                 <div className="card-body">
                     <p className="login-box-msg">Login to Access Dashboard</p>
 
-                    <form noValidate>
-                        <div className="input-group mb-3">
-                            <input type="email"
-                                   value={email}
-                                   onChange={(e) => setEmail(e.target.value)}
-                                   placeholder="Email Address"
-                                   className="form-control"
-                            />
-                            <div className="input-group-append">
-                                <div className="input-group-text">
-                                    <i className="fas fa-lock"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="input-group mb-3">
-                            <input type="password"
-                                   value={password}
-                                   onChange={(e) => setPassword(e.target.value)}
-                                   placeholder="Password"
-                                   className="form-control"
-                                   />
-                            <div className="input-group-append">
-                                <div className="input-group-text">
-                                    <i className="fas fa-key"/>
-                                </div>
-                            </div>
-                        </div>
-                        <button type="submit" className="btn btn-primary">Sign In</button>
-                    </form>
+                    <LoginForm />
+
                 </div>
             </div>
         </>

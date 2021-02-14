@@ -15,7 +15,7 @@ export const loginUser = (data, onSuccess, onError) => ({
 const setUserInfo = (data) => {
     // const parseToken = JSON.parse(data);
     const userInfo = {
-        token: data.token,
+        token: data.data.token,
         isLoggedIn: true,
     }
     localStorage.setItem('USER_INFO', JSON.stringify(userInfo));
