@@ -1,19 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { BrowserRouter } from 'react-router-dom'
+
+import './includes/adminlte';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-// import adminlte dependency css
-import 'admin-lte/dist/css/adminlte.css';
-import '@fortawesome/fontawesome-free/css/all.css';
-
-// import adminlte dependency js
-import 'admin-lte/dist/js/adminlte';
+// import redux
+// import { Provider } from 'react-redux';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+      <BrowserRouter>
+          <App />
+      </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
